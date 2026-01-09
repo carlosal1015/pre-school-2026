@@ -6,14 +6,14 @@ nocite: |
 
 # Pre-pre-curso: Fundamentos de computación científica con Python
 
-**Evento:** [Sac3 Summer School on Applied Analysis, Scientific Computing and Data Science](https://numerics.ovgu.de/sac3/?show=events_summerschooltrujillo2026)  
-**Fechas del Pre-pre-curso:** Del 5 de enero al 20 de febrero.  
-**Frecuencia:** Dos veces por semana (90 minutos por sesión).  
-**Ubicación:** Online.
+**Evento:** [Summer School and Workshop on Optimization and Operator Learning](https://numerics.ovgu.de/sac3/?show=events_summerschooltrujillo2026)  
+**Fechas del Pre-pre-curso:** Del 6/01/2026 al 17 de febrero de 2026.  
+**Frecuencia:** Martes y Viernes (8:30 PM-10:00 PM).  
+**Ubicación:** [Zoom Video Communications](https://us05web.zoom.us/j/83960651426?pwd=zQDqM3kfC7uPOP7dWf5UzxwJgLCm1H.1#success).
 
 ---
 
-## Descripción del Curso
+## Descripción del curso
 
 Este curso intensivo de 10 días está diseñado para preparar a los
 asistentes para la pre-escuela de verano principal (Summer School).
@@ -68,6 +68,7 @@ Esto proporcionará todas las herramientas necesarias, incluyendo
 Python, JupyterLab, NumPy, SciPy, PyTorch y Matplotlib.
 - **Materiales del curso:** Se proporcionarán notebooks de Jupyter y
 otros materiales a través de un repositorio público.
+- **Dropbox**
 
 ## Facilitadores
 
@@ -77,37 +78,35 @@ las matemáticas y la programación:
 - **Matihus**: Estudiante de matemática, quien recientemente presentó un póster sobre su investigación.
 - **Karen**: Estudiante de matemática con un gran interés en la aplicación de la tecnología al análisis numérico.
 
-La idea de este curso nació de conversaciones informales y el deseo compartido de hacer la computación científica más accesible para nuestros compañeros. ¡Esperamos aprender juntos!
+La idea de este curso nació de conversaciones informales y el deseo
+compartido de hacer la computación científica más accesible para
+nuestros compañeros. ¡Esperamos aprender juntos!
 
 ## Horario preliminar
 
-| Fecha             | Módulo                                                  | Actividad de Programación                                                                                                  |
-| :---------------- | :------------------------------------------------------ | :------------------------------------------------------------------------------------------------------------------------- |
-| **5 de enero**    | **Módulo 1:** De Python a NumPy                         | **Práctica 1:** Cargar un dataset (CSV) con NumPy, calcular estadísticas y visualizarlo con Matplotlib.                    |
-| **9 de enero**    | **Módulo 2:** Descenso de Gradiente desde Cero          | **Práctica 2:** Implementar GD para encontrar el mínimo de una función multivariable (ej. Rosenbrock).                     |
-| **12 de enero**   | **Módulo 3:** Acelerando la Convergencia                | **Práctica 3:** Añadir Momento y una tasa de aprendizaje adaptativa (ej. AdaGrad) a la implementación de GD.               |
-| **16 de enero**   | **Módulo 4:** Optimización Práctica con SciPy           | **Práctica 4:** Resolver un problema de optimización no lineal usando `scipy.optimize.minimize` con diferentes algoritmos. |
-| **19 de enero**   | **Módulo 5:** Métodos de 2º Orden (Optim. sin Restric.) | **Práctica 5:** Implementar el Método de Newton y comparar su convergencia con los métodos de 1er orden.                   |
-| **23 de enero**   | **Módulo 6:** Optimización con Restricciones (KKT)      | **Práctica 6:** Resolver un problema de asignación de recursos (ej. cartera de inversión) usando KKT.                      |
-| **26 de enero**   | *Semana de Repaso y Consultas 1*                        | (Opcional) Taller de revisión de código y profundización en la teoría de la dualidad lagrangiana.                          |
-| **30 de enero**   | *Semana de Repaso y Consultas 2*                        | (Opcional) Taller de depuración de código (`pdb`) y preparación para el bloque de Deep Learning.                           |
-| **6 de febrero**  | **Módulo 7:** Introducción al Deep Learning con PyTorch | **Práctica 7:** Construir un Perceptrón Multicapa (MLP) en PyTorch y entrenarlo en el dataset MNIST.                       |
-| **9 de febrero**  | **Módulo 8:** Modelos de Regresión con PyTorch          | **Práctica 8:** Implementar y entrenar un modelo de regresión logística para un problema de clasificación.                 |
-| **13 de febrero** | **Proyecto Final:** Ideación y Propuesta                | **Entregable:** Propuesta de proyecto de 1 página (objetivos, dataset y métricas de éxito).                                |
-| **16 de febrero** | **Proyecto Final:** Desarrollo y Mentoría               | **Hito:** Prototipo funcional del modelo. Sesiones de mentoría para resolver dudas.                                        |
-| **20 de febrero** | **Proyecto Final:** Demo Day                            | **Presentación:** Demo de 5 minutos del proyecto, resultados y lecciones aprendidas.                                       |
+| Fecha             | Sesiones                                        | Actividad de Programación                                                                                                                                                                                                                 | Referencias                         |
+| :---------------- | :---------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------- |
+| *Antes del 6/01*  | **Sesión 0:** Instalación y Ambiente            | Instalar `uv` y familiarizarse con JupyterLab. Crear un notebook que importe NumPy, SciPy y PyTorch para verificar sus versiones.                                                                                                         |                                     |
+| 6/01/2026         | **Fundamentos:** de Python a NumPy              | Cargar un dataset (CSV), calcular estadísticas (media, std), y visualizarlo con Matplotlib. Implementar multiplicación de matrices y resolver un sistema lineal con NumPy. [Ejercicios](https://cpp-review-dune.github.io/python/ex1.pdf) | @Gaddis2023 @Johansson2024 @Wei2022 |
+| 9/01/2026         | **Optimización I:** Descenso de Gradiente (GD)  | Implementar GD desde cero para minimizar una función (ej. Rosenbrock) y comparar variantes (batch, mini-batch).                                                                                                                           | @Beck2023                           |
+| *Fin de semana*   | *Proyecto 1: Regresión Lineal*                  | Implementar regresión lineal usando solo NumPy y luego comparar con una implementación básica en PyTorch (sin `nn.Linear`).                                                                                                               |                                     |
+| 13/01/2026        | **Optimización II:** Acelerando la Convergencia | Añadir Momento y una tasa de aprendizaje adaptativa (ej. AdaGrad/RMSProp) a la implementación de GD.                                                                                                                                      |                                     |
+| **16 de enero**   | **Optimización III:** SciPy y ODEs              | Resolver un problema de optimización no lineal con `scipy.optimize.minimize`. Adicionalmente, resolver una Ecuación Diferencial Ordinaria (ODE) simple con `scipy.integrate.solve_ivp`.                                                   |                                     |
+| **20 de enero**   | **Optimización IV:** Métodos de 2º Orden        | Implementar el Método de Newton y comparar su convergencia con los métodos de 1er orden.                                                                                                                                                  |                                     |
+| **23 de enero**   | **Optimización V:** con Restricciones (KKT)     | Resolver un problema de asignación de recursos (ej. cartera de inversión) usando las condiciones KKT.                                                                                                                                     |                                     |
+| *Fin de semana*   | *Proyecto 2: Optimizador Avanzado*              | Implementar un optimizador como Adam desde cero, encapsulándolo en una clase.                                                                                                                                                             |                                     |
+| **27 de enero**   | *Semana de Repaso y Consultas 1*                | (Opcional) Taller de revisión de código y profundización en la teoría de la dualidad lagrangiana.                                                                                                                                         |                                     |
+| **30 de enero**   | *Semana de Repaso y Consultas 2*                | (Opcional) Taller de depuración de código (`pdb`) y preparación para el bloque de Deep Learning.                                                                                                                                          |                                     |
+| **3 de febrero**  | **Deep Learning I:** Intro a PyTorch            | Comprender tensores y `autograd`. Construir un Perceptrón Multicapa (MLP) en PyTorch y entrenarlo en el dataset MNIST.                                                                                                                    |                                     |
+| **6 de febrero**  | **Deep Learning II:** Modelos de Regresión      | Implementar y entrenar un modelo de regresión logística con PyTorch para un problema de clasificación.                                                                                                                                    |                                     |
+| **10 de febrero** | **Proyecto Final:** Ideación y Propuesta        | **Entregable:** Propuesta de proyecto de 1 página (objetivos, dataset y métricas de éxito).                                                                                                                                               |                                     |
+| **13 de febrero** | **Proyecto Final:** Desarrollo y Mentoría       | **Hito:** Prototipo funcional del modelo. Sesiones de mentoría para resolver dudas.                                                                                                                                                       |                                     |
+| **17 de febrero** | **Proyecto Final:** Demo Day                    | **Presentación:** Demo de 5 minutos del proyecto, resultados y lecciones aprendidas.                                                                                                                                                      |
 
 ## Referencias
 
-Aznarán, C. (n.d.-a). Introducción a la programación en lenguaje python. Retrieved January 13, 2026, from https://numerical-analysis-2024.github.io/tutorial/intro_python/python.html  
-Aznarán, C. (n.d.-b). Introduction to scientific computing with python 🎪. Retrieved January 13, 2026, from https://scientificpython.readthedocs.io  
-Beck, A. (2023). Introduction to nonlinear optimization: Theory, algorithms, and applications with python and MATLAB, second edition (2nd ed.). Society for Industrial; Applied Mathematics. https://doi.org/10.1137/1.9781611977622  
-CS50. (n.d.-a). CS50’s adaptation of ChatGPT for students and teachers. Retrieved January 13, 2026, from https://cs50.ai  
-CS50. (n.d.-b). CS50’s adaptation of codespaces for students and teachers. Retrieved January 13, 2026, from https://cs50.dev  
-Johansson, R. (2024). Numerical python: Scientific computing and data science applications with numpy, SciPy and matplotlib. Apress. https://doi.org/10.1007/979-8-8688-0413-7  
 Liu, R., Zenke, C., Liu, C., Holmes, A., Thornton, P., & Malan, D. J. (2024). Teaching CS50 with AI: Leveraging generative artificial intelligence in computer science education. Proceedings of the 55th ACM Technical Symposium on Computer Science Education v. 1, 750–756. https://doi.org/10.1145/3626252.3630938  
 Lynch, S. (2018). Dynamical systems with applications using python. Springer International Publishing. https://doi.org/10.1007/978-3-319-78145-7  
-Malan, D. J. (2025). Teaching CS50 with AI. https://www.youtube.com/watch?v=6rAWxGAG6EI.  
 Nagar, S. (2018). Introduction to python for engineers and scientists: Open source solutions for numerical computation. Apress. https://doi.org/10.1007/978-1-4842-3204-0  
 project, P. (n.d.). Material. Retrieved January 13, 2026, from https://numerics.ovgu.de/pec3/document/index.php  
 Sundnes, J. (2020). Introduction to scientific programming with python. Springer International Publishing. https://doi.org/10.1007/978-3-030-50356-7
