@@ -1,0 +1,3 @@
+#!/usr/bin/env python
+
+print('Your assignment is to read "Hamlet" by tomorrow.')
