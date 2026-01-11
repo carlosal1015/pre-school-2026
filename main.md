@@ -68,7 +68,12 @@ Esto proporcionará todas las herramientas necesarias, incluyendo
 Python, JupyterLab, NumPy, SciPy, PyTorch y Matplotlib.
 - **Materiales del curso:** Se proporcionarán notebooks de Jupyter y
 otros materiales a través de un repositorio público.
-- **Dropbox**
+- **Carpeta compartida**: [Enlace a Dropbox](https://www.dropbox.com/scl/fo/x67ac9r8enaa4zewgwzbm/AB9oGu5a1UAm0IXajbaue60?rlkey=kt6d4ygbr4ys1f0n9880bec6h&st=3lculzjs&dl=0).
+- **Lista de reproducción**: [YouTube](https://youtube.com/playlist?list=PLWb96MFebtXjpVhTF9N7-CAo1fOtPoB6q&si=ZIyWQPGGfyT8dAgz)
+- Ejemplos del libro https://github.com/carlosal1015/pre-school-2026/tree/main/src/gaddis
+- Repositorios de ayuda: https://github.com/carlosal1015/Cpp-Programming https://github.com/carlosal1015/Python-Programming
+<!-- https://www.octotree.io -->
+
 
 ## Facilitadores
 
@@ -86,7 +91,7 @@ nuestros compañeros. ¡Esperamos aprender juntos!
 
 | Fecha             | Sesiones                                        | Actividad de Programación                                                                                                                                                                                                                 | Referencias                         |
 | :---------------- | :---------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------- |
-| *Antes del 6/01*  | **Sesión 0:** Instalación y Ambiente            | Instalar `uv` y familiarizarse con JupyterLab. Crear un notebook que importe NumPy, SciPy y PyTorch para verificar sus versiones.                                                                                                         |                                     |
+| *Antes del 6/01*  | **Sesión 0:** Instalación y Ambiente            | [Instalar `uv`](https://www.youtube.com/watch?v=jF-1tfnqxtA) y familiarizarse con JupyterLab. Crear un notebook que importe NumPy, SciPy y PyTorch para verificar sus versiones.                                                                                                         |                                     |
 | 6/01/2026         | **Fundamentos:** de Python a NumPy              | Cargar un dataset (CSV), calcular estadísticas (media, std), y visualizarlo con Matplotlib. Implementar multiplicación de matrices y resolver un sistema lineal con NumPy. [Ejercicios](https://cpp-review-dune.github.io/python/ex1.pdf) | @Gaddis2023 @Johansson2024 @Wei2022 |
 | 9/01/2026         | **Optimización I:** Descenso de Gradiente (GD)  | Implementar GD desde cero para minimizar una función (ej. Rosenbrock) y comparar variantes (batch, mini-batch).                                                                                                                           | @Beck2023                           |
 | *Fin de semana*   | *Proyecto 1: Regresión Lineal*                  | Implementar regresión lineal usando solo NumPy y luego comparar con una implementación básica en PyTorch (sin `nn.Linear`).                                                                                                               |                                     |
