@@ -1,0 +1,37 @@
+version: 1
+project:
+  contributors:
+    - id: person_a
+      name: Carlos Aznarán
+      email: caznaranl@uni.pe
+      orcid: 0000-0001-8314-2271
+      github: carlosal1015
+      affiliations:
+        - id: org_a
+    - id: person_b
+      name: Matihus Molina
+      email: matihus.molina@unmsm.edu.pe
+      orcid: 0000-0002-9582-9051
+      github: Maticus-7
+      affiliations:
+        - id: org_b
+    - id: person_c
+      name: Karen Silvera
+      email: 220591@unsaac.edu.pe
+      orcid: 0009-0009-1607-9191
+      github: KarenSilvera
+      affiliations:
+        - id: org_c
+  affiliations:
+    - id: org_a
+      institution: Universidad Nacional de Ingeniería
+      department: Facultad de Ciencias
+      ror: 006v63s16
+    - id: org_b
+      institution: Universidad Nacional Mayor de San Marcos
+      department: Facultad de Ciencias Matemáticas
+      ror: 006vs7897
+    - id: org_c
+      institution: Universidad Nacional de San Antonio Abad del Cusco
+      department: Facultad de Ciencias Químicas, Físicas y Matemáticas
+      ror: 03gsd6w61
