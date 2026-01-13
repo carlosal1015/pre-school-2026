@@ -4,7 +4,7 @@ extends:
   - ./authors.yml
 project:
   id: 59e3524d-36c8-48f7-85cb-c097bc83fb4e
-  title: Pre-pre-School
+  title: Pre-pre-school
   description: Repaso previo a la escuela
   keywords: ["numpy", "pytorch"]
   authors:
