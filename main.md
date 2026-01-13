@@ -72,6 +72,7 @@ otros materiales a través de un repositorio público.
 - **Grabación de las sesiones**: [Lista de reproducción](https://youtube.com/playlist?list=PLWb96MFebtXjpVhTF9N7-CAo1fOtPoB6q&si=ZIyWQPGGfyT8dAgz).
 - **Disponibilidad de ejemplos**: [Programas ejemplos del libro](https://github.com/carlosal1015/pre-school-2026/tree/main/src/gaddis).
 - **Repositorios de ejemplos complementarios**: [Python-Programming](https://github.com/carlosal1015/Python-Programming) / [Cpp-Programming](https://github.com/carlosal1015/Cpp-Programming).
+- **Lectura sobre ecuaciones diferenciales**: https://numerics.ovgu.de/teaching/numnn/skript.pdf
 <!-- https://www.octotree.io -->
 
 
@@ -87,7 +88,7 @@ La idea de este curso nació de conversaciones informales y el deseo
 compartido de hacer la computación científica más accesible para
 nuestros compañeros. ¡Esperamos aprender juntos!
 
-$$\alpha + \beta = \gamma.$$
+$$\mathbf{a}_{n+1} = \mathbf{a}_n-\eta \nabla f(\mathbf{a}_n)$$
 
 ## Horario preliminar
 
