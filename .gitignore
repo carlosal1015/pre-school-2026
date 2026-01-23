@@ -219,3 +219,4 @@ _build
 *.pickle
 guitar-echo.wav
 data.csv
+temperature_outdoor_2014*
