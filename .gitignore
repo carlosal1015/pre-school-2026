@@ -208,3 +208,14 @@ __marimo__/
 
 # MyST build outputs
 _build
+*.pdf
+*.svg
+*.png
+*.html
+*.h5
+*.pyx
+*.c
+*.msgpack
+*.pickle
+guitar-echo.wav
+data.csv
