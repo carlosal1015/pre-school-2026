@@ -1,0 +1,43 @@
+% arara: lualatex: {
+% arara: --> shell: yes,
+% arara: --> draft: yes,
+% arara: --> interaction: batchmode
+% arara: --> }
+% arara: lualatex: {
+% arara: --> shell: yes,
+% arara: --> synctex: yes,
+% arara: --> interaction: batchmode
+% arara: --> }
+% arara: clean: {
+% arara: --> extensions:
+% arara: --> ['aux','fls','lof','log','lol',
+% arara: --> 'out','synctex.gz','toc']
+% arara: --> }
+
+%! arara: indent: {
+%! arara: --> overwrite: yes,
+%! arara: --> silent: yes,
+%! arara: --> cruft: build
+%! arara: --> }
+
+\input{preamble}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\listoffigures
+\listoflistings
+
+\input{overview}
+
+\part{Teoría}
+
+\input{theory/introduction/main}
+\input{theory/perceptron/main}
+
+\part{Práctica}
+
+\input{practice/introduction/main}
+
+\end{document}

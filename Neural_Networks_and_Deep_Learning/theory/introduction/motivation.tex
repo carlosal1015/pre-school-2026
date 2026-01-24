@@ -1,0 +1,191 @@
+\section{Motivación}
+
+\subsection{¿Por qué el aprendizaje automático?}
+
+
+Piense en algunas de las cosas que hacemos sin esfuerzo en el día a
+día: reconocer visualmente a las personas, los lugares y las cosas,
+recoger objetos, comprender el lenguaje hablado, etc.
+¿Cómo programarías una máquina para hacer estas cosas?
+Desafortunadamente, es difícil dar un programa paso a paso, ya que
+tenemos muy poca conciencia introspectiva del funcionamiento de
+nuestras mentes.
+¿Cómo reconoces a tu mejor amigo?
+¿Exactamente qué rasgos faciales eliges?
+Los investigadores de Inteligencia Artificial intentaron durante
+décadas idear procedimientos computacionales para este tipo de
+tareas, y resultó frustrantemente difícil.
+
+El aprendizaje automático tiene un enfoque diferente: recopilar
+muchos datos y hacer que un algoritmo descubra automáticamente un
+buen comportamiento a partir de los datos.
+Si está intentando escribir un programa para distinguir diferentes
+categorías de objetos (árbol, perro, etc.), primero puede recopilar
+un conjunto de datos de imágenes de cada tipo de objeto y luego usar
+un algoritmo de aprendizaje automático para entrenar un modelo
+(como una red neuronal) para clasificar una imagen como una categoría
+u otra.
+Tal vez aprenderá a ver de una manera análoga al sistema visual
+humano, o tal vez tenga un enfoque completamente diferente.
+De cualquier manera, todo el proceso puede ser mucho más fácil que
+especificar todo a mano.
+
+Además de ser más fácil, hay muchas otras razones por las que
+podríamos querer usar el aprendizaje automático para resolver un
+problema dado:
+
+\begin{itemize}
+    \item .
+\end{itemize}
+
+\subsection{¿En qué se diferencia el Aprendizaje automático de la estadística?}
+
+
+Muchos de los algoritmos empleados provienen de la estadística:
+regresión lineal, análisis de componentes principales (PCA),
+estimación de máxima probabilidad, estimación de parámetros bayesianos
+y maximización de expectativas.
+La mayoría de las técnicas usadas en el aprendizaje automático desde
+las más básicas hasta las más avanzadas son estadísticos es por ello
+que ambos campos tiene mucha similitud ya que ambos buscan aprender
+de los datos.
+Las opiniones sobre cuál es la diferencia difieren, pero en términos
+generales,la estadística está motivado por guiar la toma de decisiones
+humanas, mientras que el aprendizaje automático está motivado por
+agentes autónomos.
+
+\subsection{¿Por qué un curso sobre redes neuronales?}
+
+
+Las redes neuronales son un enfoque particular del aprendizaje
+automático, inspiradas en como procesa el cerebro la información.
+Una red neuronal está compuesto por una gran cantidad de unidades,
+cada una de las cuales realiza cálculos muy simples, pero que producen
+comportamientos sofisticados en conjunto.
+Este curso se centra en redes neuronales por varias razones:
+
+\begin{itemize}
+   \item La redes neuronales son la base de los sistemas de
+   reconocimiento de voz, traducción, clasificación de resultados
+   de búsqueda, reconocimiento facial,
+   análisis de sentimientos, búsqueda de imágenes, y muchas otras
+   aplicaciones.
+
+   \item Existen potentes paquetes de software como \texttt{Caffe},
+   \texttt{Theano}, \texttt{Torch} y \texttt{TensorFlow}, que nos
+   permite implementar rápidamente algoritmos de aprendizaje
+   sofisticados.
+
+   \item Muchos de los algoritmos importantes son mucho más simples
+   de explicar, en comparación con otros subcampos del aprendizaje
+   automático.
+\end{itemize}
+
+Esta clase es muy inusual entre las clases de pregrado, ya que cubre
+técnicas modernas de investigación, es decir, algoritmos introducidos
+en los últimos 5 años.
+Es sorprendente que con menos de una página de código, podamos
+construir algoritmos de aprendizaje más potentes que los mejores
+investigadores habían ideado a partir de hace 5 años.
+
+\section{Tipos de Aprendizaje automático}
+
+
+En términos generales, hay tres diferentes tipos de aprendizaje
+automático:
+
+\begin{description}
+	\item[Aprendizaje supervisado] Tenemos ejemplos del comportamiento
+   deseado. Por ejemplo, si estamos tratando de entrenar una red
+   neuronal para distinguir los autos y camiones, recolectamos
+   imágenes de autos y camiones, y rotulamos cada uno como un
+   automóvil o un camión.
+
+\begin{multicols}{2}
+	\begin{itemize}
+		\item \href{https://es.wikipedia.org/wiki/K_vecinos_m%C3%A1s_pr%C3%B3ximos}{$k$ vecinos más próximos}.
+		\item \href{https://es.wikipedia.org/wiki/Regresi%C3%B3n_lineal}{regresión lineal}.
+		\item \href{https://es.wikipedia.org/wiki/Regresi%C3%B3n_log%C3%ADstica}{regresión logística}.
+		\item \href{https://es.wikipedia.org/wiki/M%C3%A1quinas_de_vectores_de_soporte}{máquinas de soporte vectorial}.
+		\item \href{https://es.wikipedia.org/wiki/Aprendizaje_basado_en_%C3%A1rboles_de_decisi%C3%B3n}{aprendizaje basado en árboles de decisión}.
+		\item \href{https://es.wikipedia.org/wiki/Random_forest}{bosques aleatorios}.
+		\item \href{https://es.wikipedia.org/wiki/Red_neuronal_artificial}{red neuronal artificial}.
+	\end{itemize}
+\end{multicols}
+
+\begin{figure}[H]
+	\vfill
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{spam-classification}
+		\caption*{}
+		\label{fig:spam}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includesvg[width=\linewidth]{regression}
+		\caption*{}
+		\label{fig:regression}
+	\end{subfigure}
+   \caption{Izquierda: Un conjunto etiquetados de entrenamiento para
+   el aprendizaje supervisado, por ejemplo la clasificación de spam.
+	Derecha: Regresión.}
+	\label{fig:supervised-learning}
+\end{figure}
+
+   \item[Aprendizaje reforzado] No tenemos ejemplos del
+   comportamiento, pero tenemos algún método para determinar qué tan
+   bueno es un comportamiento esto se conoce como una
+   \emph{señal de recompensa}.
+	(Por analogía, es como entrenar perros para realizar trucos). Un
+	ejemplo sería entrenar un agente para jugar videojuegos, donde la
+	señal de recompensa es la del puntuación del jugador.
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.5\paperwidth]{reinforcement-learning}
+		\caption{Aprendizaje reforzado.}
+		\label{fig:reinforcement-learning}
+	\end{figure}
+
+	\item[Aprendizaje no supervisado] No tenemos etiquetas ni señal de
+   recompensa. Solo tenemos un montón de datos y queremos buscar
+   patrones en los datos. Por ejemplo, quizás tengamos muchos ejemplos
+   de pacientes con autismo, y desea identificar diferentes subtipos
+   de la condición.
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.5\paperwidth]{train-set}
+		\caption{Un conjunto no etiquetados de entrenamiento para el aprendizaje no supervisado.}
+		\label{fig:train-set}
+	\end{figure}
+
+	\begin{itemize}
+		\item \href{https://es.wikipedia.org/wiki/An%C3%A1lisis_de_grupos}{Agrupamiento}.
+			\begin{itemize}
+				\item \href{https://es.wikipedia.org/wiki/K-medias}{$K$-medias}.
+				\item \href{https://es.wikipedia.org/wiki/Agrupamiento_jer%C3%A1rquico}{Agrupamiento jerárquico}.
+				\item \href{https://es.wikipedia.org/wiki/Algoritmo_esperanza-maximizaci%C3%B3n}{Algoritmo esperanza-maximización}.
+			\end{itemize}
+		\item Visualización y reducción de dimensionalidad
+			\begin{itemize}
+				\item \href{https://es.wikipedia.org/wiki/An%C3%A1lisis_de_componentes_principales}{Análisis de componentes principales}.
+				\item \href{https://en.wikipedia.org/wiki/Kernel_principal_component_analysis}{Kernel principal component analysis}.
+				\item \href{https://en.wikipedia.org/wiki/Nonlinear_dimensionality_reduction#Locally-linear_embedding}{Locally-linear embedding}
+				\item \href{https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding}{$t$-distributed stochastic neighbor embedding}
+			\end{itemize}
+		\item \href{https://es.wikipedia.org/wiki/Reglas_de_asociaci%C3%B3n}{Reglas de asociación}
+			\begin{itemize}
+				\item \href{https://es.wikipedia.org/wiki/Algoritmo_apriori}{Algoritmo apriori}
+				\item \href{https://en.wikipedia.org/wiki/Association_rule_learning#Eclat_algorithm}{Eclat algorithm}
+			\end{itemize}
+	\end{itemize}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.5\paperwidth]{clustering}
+		\caption{Agrupación.}
+		\label{fig:clustering}
+	\end{figure}
+\end{description}

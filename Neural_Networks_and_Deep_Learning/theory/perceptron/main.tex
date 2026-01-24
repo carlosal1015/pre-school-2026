@@ -1,0 +1,242 @@
+\chapter{Perceptrón}
+
+\section{Límites del clasificador lineal}
+
+Las neuronas individuales (clasificadores lineales) tienen un poder
+expresivo muy limitado.
+
+XOR es un ejemplo clásico de una función que no es linealmente
+separable. Existe una demostración elegante usando convexidad.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.4\paperwidth]{xor}
+\end{figure}
+
+\begin{definition}[Conjuntos convexos]
+Un conjunto $\mathcal{S}$ es \emph{convexo} si cualquier segmento
+de línea que conecta dos puntos en $\mathcal{S}$ se encuentra
+completamente dentro de $\mathcal{S}$. Matemáticamente,
+\begin{equation*}
+\bm{x_{1}},\bm{x_{2}}\in\mathcal{S}\implies
+\lambda\bm{x_{1}}+\left(1-\lambda\right)\bm{x_{2}}\in\mathcal{S}
+\text{ para }0\leq\lambda\leq1.
+\end{equation*}
+\end{definition}
+Un simple argumento inductivo muestra que para $\bm{x_{1}}$,\ldots,
+$\bm{x_{n}}\in\mathcal{S}$, \emph{pesos ponderados}, o
+\emph{combinaciones convexas}, se encuentra dentro del conjunto:
+\begin{equation*}
+\lambda_{1}\bm{x_{1}}+\cdots\lambda_{n}\bm{x_{n}}\in\mathcal{S}
+\text{ para }\lambda_{i}>0,\lambda_{1}+\cdots+\lambda_{n}=1.
+\end{equation*}
+
+\subsubsection{Mostrando que XOR no es linealmente separable}
+
+
+Los semiespacios son obviamente convexos.
+Supongamos que hubiera alguna hipótesis factible. Si los ejemplos
+positivos están en el semiespacio positivo, entonces el segmento
+de la línea verde también debe estarlo.
+Del mismo modo, el segmento de línea roja debe alinearse dentro del
+medio espacio negativo.
+Pero la intersección no se encuentra en ambos semiespacios.
+Contradicción.
+Estas imágenes representan vectores de dimensión $16$.
+Blanco es $0$ y negro es $1$.
+Desea distinguir los patrones A y B en todas las traslaciones posibles
+(con ajuste)
+¡La invariancia de traslación es comúnmente deseada en la visión!
+Supongamos que hay una solución factible.
+El promedio de todas las traslaciones de A es el vector
+$(0.25, 0.25,\ldots, 0.25)$.
+Por lo tanto, este punto debe clasificarse como A.
+De manera similar, el promedio de todas las traducciones de B también
+lo es $(0.25, 0.25,\ldots, 0.25)$. Por lo tanto, debe clasificarse
+como B. ¡Contradicción!
+
+Algunas veces podemos superar esta limitación utilizando aplicaciones
+características, al igual que para la regresión lineal. Por ejemplo,
+para XOR:
+\begin{equation*}
+   \psi\left(\bm{x}\right)=
+   \begin{pmatrix}
+      x_{1}\\
+      x_{2}\\
+      x_{3}
+   \end{pmatrix}
+\end{equation*}
+
+\begin{table}[H]
+   \centering
+   \begin{tabular}{cc|ccc|c}
+      $x_{1}$ & $x_{2}$ & $\phi_{1}\left(x\right)$ &
+      $\phi_{2}\left(x\right)$ & $\phi_{3}\left(x\right)$ &
+      $t$\\
+      \hline
+      0 & 0 & 0 & 0 & 0 & 0\\
+      0 & 1 & 0 & 1 & 0 & 1\\
+      1 & 0 & 1 & 0 & 0 & 1\\
+      1 & 1 & 1 & 1 & 1 & 0\\
+   \end{tabular}
+\end{table}
+Este es linealmente separable.
+No es una solución general: puede ser difícil escoger buenas funciones
+bases.
+En vez, usaremos redes neuronales para aprender hipótesis no lineales
+directamente.
+
+\section{Perceptrón multicapas}
+
+
+Cada capa conecta $N$ unidades de entrada a $M$ unidades de salida.
+En el caso más simple, todas unidades de entrada son conectadas a
+todas las unidades de salida. Llamaremos esto una
+\emph{capa completamente conectada}.
+Consideraremos otros tipos de capas después.
+
+Nota: las entradas y las salidas para una capa son distintas de las
+entradas y salidas de la red.
+
+Recordemos la regresión softmax:
+
+\begin{definition}[Función exponencial normalizada]
+Esta función generaliza la función logística, se emplea para comprimir
+un vector en $\mathds{R}^{k}$ de la siguiente manera:
+\begin{align*}
+   \sigma\colon\mathds{R}^{k}
+   \rightarrow{\left[0,1\right]}^{k}
+   \left(z_{1},\ldots,z_{k}\right)
+   \mapsto\left(\frac{e^{z_{1}}}{\sum_{i=1}^{k}e^{z_{1}}},
+   \frac{e^{z_{k}}}{\sum_{i=1}^{k}e^{z_{k}}}\ldots,\right)
+   \end{align*}
+\end{definition}
+
+\begin{listing}[H]%float=h
+   \inputminted[escapeinside=||,mathescape=true]{python}{code/2.py}
+   \caption{Función softmax en Python 3.}
+   \label{lst:softmax}
+\end{listing}
+
+\begin{definition}[Regresión logística multinomial]
+\href{https://en.wikipedia.org/wiki/Multinomial_logistic_regression}{}.
+\end{definition}
+
+Esto significa que tenemos una matriz de pesos $m\times n$.
+Las unidades de salida son una función de las unidades de entrada:
+\begin{equation*}
+   \bm{y}=
+   f\left(\bm{x}\right)=
+   \phi\left(\bm{W}\bm{x}+\bm{b}\right)
+\end{equation*}
+
+Una red multipcapa consiste de capas totalmente conectadas.
+A pesar del nombre, ¡no tiene nada que ver con los perceptrones!
+
+Algunas funciones de activación son $y=z$,
+$y=\max\left(0,x\right)\left(0,z\right)$,
+$y=\log1+e^{z}$,
+$y=\begin{cases}1,&\text{si }z>0\\0,&\text{si }z\leq0\end{cases}$,
+$y=\frac{1}{1+e^{-z}}$, $y=\frac{e^{z}-e^{-z}}{e^{z}+e^{-z}}$.
+
+\subsubsection{Diseñando una red para calcular XOR}
+
+
+Asumir la función de activación
+$y=\begin{cases}1,&\text{si }z>0\\0,&\text{si }z\leq0\end{cases}$.
+
+Cada capa calcula una función, así que la red calcula una composición de funciones:
+\begin{align*}
+   \bm{h}^{\left(1\right)}&=
+   f^{\left(1\right)}\left(\bm{x}\right)\\
+   \bm{h}^{\left(2\right)}&=
+   f^{\left(2\right)}\left(\bm{h}^{\left(1\right)}\right)\\
+   \vdots&=
+   \vdots\\
+   y=f^{\left(l\right)}\left(\bm{h}^{\left(l-1\right)}\right)
+\end{align*}
+O $\bm{y}=f^{\left(l\right)}\circ\cdots\circ f^{\left(1\right)}\left(\bm{x}\right)$
+
+Las redes neuronales proporcionan modularidad: podemos implementar
+los cálculos de cada capa como una caja negra.
+
+\begin{figure}[H]
+   \vfill
+	\begin{subfigure}{.3\textwidth}
+		\centering
+		\includesvg[width=\linewidth]{plot1}
+		\caption*{$y=x$.}
+		\label{fig:plot1}
+	\end{subfigure}
+	\begin{subfigure}{.3\textwidth}
+		\centering
+		\includesvg[width=\linewidth]{plot2}
+		\caption*{$y=\max\left(0,x\right)$.}
+      \label{fig:plot2}
+   \end{subfigure}
+   \begin{subfigure}{.3\textwidth}
+      \centering
+      \includesvg[width=\linewidth]{plot3}
+      \caption*{$y=\log1+\exp\left(x\right)$.}
+      \label{fig:plot3}
+   \end{subfigure}
+   \vfill
+   \begin{subfigure}{.3\textwidth}
+      \centering
+      \includesvg[width=\linewidth]{plot4}
+      \caption*{$y=\begin{cases}1, & \text{ si }x>0\\0, & \text{ si }x < 0\end{cases}$.}
+      \label{fig:plot4}
+   \end{subfigure}
+   \begin{subfigure}{.3\textwidth}
+      \centering
+      \includesvg[width=\linewidth]{plot5}
+      \caption*{$y=\dfrac{1}{1+\exp\left(-x\right)}$.}
+      \label{fig:plot5}
+   \end{subfigure}
+   \begin{subfigure}{.3\textwidth}
+      \centering
+      \includesvg[width=\linewidth]{plot6}
+      \caption*{$y=\dfrac{\exp\left(z\right)-\exp\left(-z\right)}{\exp\left(z\right)+\exp\left(-z\right)}$.}
+      \label{fig:plot6}
+   \end{subfigure}
+	\caption*{Algunas funciones de activación.}
+	\label{fig:plots}
+\end{figure}
+
+\section{Aprendizaje característico}
+
+
+Cada primera capa oculta unidad calcula $\sigma(\bm{w}^{T}_{i}\bm{x})$.
+Aquí está uno de los vectores de pesos (también llamado \emph{característica}).
+
+Se transformó en una imagen, con gris = 0, blanco = +, negro = -.
+Para calcular $\bm{w}^{T}_{i}\bm{x}$, multiplique los correspondientes
+pixeles, y sume el resultado.
+
+\section{Poder expresivo}
+
+Hemos visto que hay algunas funciones que los clasificadores lineales
+no pueden representar.
+¿Las redes profundas son mejores?
+
+Cualquier secuencia de capas lineales se puede representar de manera
+equivalente con una sola capa lineal
+
+\begin{equation*}
+   \bm{y}=
+   \underbrace{\bm{W}^{\left(3\right)}\bm{W}^{\left(2\right)}\bm{W}^{\left(1\right)}}_{\bm{W}^{\prime}}\bm{x}
+\end{equation*}
+
+
+\section{Redes neuronales retroalimentación}
+
+La propagración hacia atrás es el método principal del aprendizaje profundo. Pero antes empecemos explorando la propagación hacia atrás, debemos definir un número de conceptos básicos y explicar sus interacciones. El aprendizaje profundo es el aprendizaje automático con redes neuronales artificiales profundas, y el objetivo de este capítulo explica cómo superficialmente las redes neuronales trabaja. También nos referimos a las redes neuronales superficiales como la \emph{redes neuronales simples retroalimentadas}, a pesar de que el término en sí mismo debe ser usado para referirse para cualquier red neuronal que no tiene una conexión de retroalimentación.
+
+En general, el aprendizaje profundo consiste en solucionar los problemas que surgen cuando intentamos agregar más capas a una red neuronal poco profunda.
+
+
+\begin{theorem}[Aproximación de Weirstraß]
+Sea $g$ una función real continua definida en el intervalo cerrado $\left[a,b\right]$. Entonces, dado cualquier positivo, existe un polinomio $y$ con coeficientes reales tal que \[ \left|g\left(x\right)-y\left(x\right)\right|<\varepsilon \] para cualquier $x\in\left[a,b\right]$.
+\end{theorem}
+
+Este teorema también puede extenderse a funciones no polinómicas. Sea $\left\{\right\}$

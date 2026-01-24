@@ -1,0 +1,91 @@
+\section{Modelos lineales}
+
+
+\begin{definition}[Error raíz cuadrática media]
+\begin{equation}
+\operatorname{RMSE}\left(\bm{X},h\right)=
+\sqrt{
+	\frac{1}{m}\sum_{i=1}^{m}
+	{\left(h\left(\bm{x}^{\left(i\right)}\right)-y^{\left(i\right)}\right)}^{2}
+}
+\label{eq:rmse}
+\end{equation}
+\end{definition}
+
+\begin{definition}[Error media absoluta]
+\begin{equation}
+\operatorname{MAE}\left(\bm{X},h\right)=
+\frac{1}{m}\sum_{i=1}^{m}
+\left|h\left(\bm{x}^{\left(i\right)}\right)-y^{\left(i\right)}\right|
+\label{eq:mae}
+\end{equation}
+\end{definition}
+
+Tanto~\eqref{eq:rmse} y~\eqref{eq:mae} son maneras de medir la distancia
+entre dos vectores: el vector de predicciones y el vector de los valores
+objetivos. Varias medidas de distancias, o \emph{normas}, son posibles:
+\begin{itemize}
+	\item Calculando la raíz de una suma de cuadrados $(\operatorname{RMSE})$
+	corresponde a la \emph{norma Euclideana}: esta es la noción de
+	distancia que estás familiarizado. También es llamada la \emph{norma}
+	$\ell_{2}$, denotada ${\left\|\cdot\right\|}_{2}$ (o solo $\left\|\cdot\right\|$).
+	\item Calculando la suma de valores absolutos $(\operatorname{MAE})$
+	corresponde a la \emph{norma} $\ell_{1}$, denotada${\left\|\cdot\right\|}_{1}$.
+	A veces es llamada la \emph{norma Manhattan} porque este mide la
+	distancia entre dos puntos en una ciudad si puedes solo viajar a
+	lo largo de una cuadra ortogonal.
+	\item Más generalmente, la \emph{norma} $\ell_{k}$ de un vector
+	$\bm{v}$ que contiene $n$ elementos es definido como
+	${\left\|\bm{v}\right\|}_{k}={\left({\left|v_{0}\right|}^{k}+{\left|v_{1}\right|}^{k}+\cdots+{\left|v_{n}\right|}^{k}\right)}^{\frac{1}{k}}$. $\ell_{0}$
+	nos da el número de elementos no nulos en un vector, y $\ell_{\infty}$
+	nos da el máximo valor en el vector.
+	\item Cuanto más alto es el índice de la norma, más se enfoca en
+	valores grandes y descuida los pequeños. Es por eso que el
+	$\operatorname{RMSE}$ es más sensible a los valores atípicos que
+	el $\operatorname{MAE}$. Pero cuando los valores atípicos son
+	exponencialmente raros (como en una curva en forma de campana),
+	el $\operatorname{RMSE}$ funciona muy bien y generalmente se
+	prefiere.
+\end{itemize}
+
+Queremos predecir un escalar $t$ como una función de un vector $x$.
+Dado un conjunto de datos pares
+${\left\{\left(x^{\left(i\right)},t^{\left(i\right)}\right)\right\}}^{N}_{i=1}$.
+
+\begin{equation}
+	y = w^{T}x+b
+\end{equation}
+
+\begin{itemize}
+	\item $y$ es la predicción.
+	\item $w$ es el vector de pesos.
+	\item $b$ es el sesgo.
+	\item $w$ y $b$ juntos son los parámetros.
+	\item La configuración de los parámetros son llamados \emph{hipótesis}.
+\end{itemize}
+
+\begin{definition}[Función de pérdida]
+Error cuadrático
+\begin{equation*}
+\mathcal{L}\left(y,t\right)=
+\frac{1}{2}{\left(y-t\right)}^{2}
+\end{equation*}
+
+\begin{itemize}
+	\item $y-t$ es el residual.
+\end{itemize}
+\end{definition}
+
+\begin{definition}[Función de costo]
+\begin{equation*}
+\mathcal{J}\left(w,b\right)=
+\frac{1}{2N}\sum_{i=1}^{N}{\left(y^{\left(i\right)}-t^{\left(i\right)}\right)}^{2}=
+\frac{1}{2N}\sum_{i=1}^{N}{\left(w^{T}x^{\left(i\right)}+b-t^{\left(i\right)}\right)}^{2}
+\end{equation*}
+\end{definition}
+
+\begin{listing}[H]%float=h
+\inputminted{python}{code/1.py}
+\caption{Expresión matemática en Python 3.}
+\label{lst:example}
+\end{listing}

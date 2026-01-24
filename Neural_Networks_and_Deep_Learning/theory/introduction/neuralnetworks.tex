@@ -1,0 +1,432 @@
+\section{¿Qué es una red neuronal?}
+
+
+Ha sido motivado \ldots.
+
+\begin{quote}
+   Una red neuronal es un procesador paralelo distribuido masivamente
+   hecho de unidades de procesamiento simples que tiene una
+   inclinación natural para almacenenar conocimiento experimental y
+   hacer este disponible para usar.
+	Este se parece el cerebro en dos aspectos:
+	\begin{enumerate}
+      \item El conocimiento es adquirido por la red desde su entorno
+      a través del proceso de aprendizaje.
+      \item Las fuerzas de conexión entre neuronas, conocido como
+      pesos sinápticos, son usados para almacenar el conocimiento
+      adquirido.
+	\end{enumerate}
+\end{quote}
+
+El procedimiento usado para realizar el procesado de aprendizaje es
+llamado \emph{algoritmo de aprendizaje}, cuya función es modificar
+los pesos sinápticos de la red de manera ordenada para lograr el
+objetivo de diseño deseado.
+
+La modificación de los pesos sinápticos proporciona el método
+tradicional para el diseño de las redes neuronales.
+
+\subsection{Beneficios de las redes neuronales}
+
+
+Las redes neuronales ofrecen las siguientes propiedades útiles y
+capacidades:
+
+\begin{description}
+   \item[No linealidad] Una neurona artificial puede ser lineal o no
+   lineal.
+   \item[Aplicación entrada--salida] El aprendizaje supervisado
+   involucra la modificación de los pesos sinápticos.
+	\item[Adaptabilidad] Las redes neuronales tienen una capacidad
+	incorporada para adaptar sus pesos sinápticos a los cambios.
+	\item[Respuesta evidencial]
+	\item[Información contextual]
+	\item[Tolerancia a fallas]
+	\item[Implementabilidad de integración a muy gran escala]
+	\item[Uniformidad de análisis y diseño]
+	\item[Analogía neurobiológica]
+\end{description}
+
+\subsection{Modelos de una neurona}
+
+
+Una neurona es una unidad de procesamiento de información que es
+fundamental para la operación de una red neuronal. El diagrama de
+bloque en la portada muestra el \emph{modelo} de una neurona, que
+forma las bases para el diseño de una larga familia de redes
+neuronales estudiadas en los últimos capítulos.
+Aquí, identificamos tres elementos básicos del modelo de la neurona:
+
+\begin{enumerate}
+	\item Un conjunto de \emph{sinápsis}, \emph{enlaces de conexión},
+   cada una de ellas es caracterizada por un \emph{peso} o
+   \emph{fuerza} de sí misma.
+   Específicamente, una señal $x_{j}$ en la entrada de la sinápsis $j$
+   conectada a la neurona $k$ es multiplicada por el peso sináptico
+   $w_{k_{j}}$. Es importante hacer notar la manera en el cual el
+   subíndice del peso sináptico $w_{k_{j}}$ son escritos.
+   El primer subíndice en $w_{k_{j}}$ refiere a la neurona en
+   cuestión, y el segundo subíndice refiere a la entrada final de la
+   sinápsis al cual el peso refiere.
+   A diferencia de los pesos de una sinápsis en el cerebro, el peso
+   sináptico de una neurona artificial podría mentir en un rango que
+   incluye valores negativos así como valores positivos.
+   \item Un \emph{sumador} para sumar las señales de entrada,
+   ponderadas por las respectivas fuerzas sinápticas de la neurona;
+   las operaciones descritas aquí constituyen una
+   \emph{combinación lineal}.
+	\item Una \emph{función de activación} para limitar la amplitud de
+	la salida de una neurona.
+   Esta función es también referida como una
+   \emph{función de aplastamiento}, en el que este aplasta (acota) el
+   rango de amplitud permitado de la señal de salida hacia algún valor
+   finito.
+\end{enumerate}
+
+Típicamente, el rango de amplitud normalizado de la salida de una
+neurona es escrito como un intervalo cerrado unitario
+$\left[0,1\right]$, o alternativamente, $\left[-1,1\right]$.
+
+El modelo de neurona de la portada también incluye un \emph{sesgo}
+aplicado externamente, denotado por $b_{k}$.
+El sesgo $b_{k}$ tiene el efecto de incrementar o decrementar la
+entrada de la red de la función de activación, dependiendo de si es
+positiva o negativa, respectivamente.
+
+En términos matemáticos, podemos describir la neurona $k$
+escribiendo el par de ecuaciones:
+\begin{align}
+u_{k}&=
+\sum_{j=1}^{m}w_{k_{k}}x_{j}
+\label{eq:synaptic-weights}
+\shortintertext{y}
+y_{k}&=
+\varphi\left(u_{k}+b_{k}\right)
+\label{eq:output-signal}
+\end{align}
+donde $x_{1},x_{2},\ldots,x_{m}$ son las señales de entrada;
+$w_{k_{1}},w_{k_{2}},\ldots,w_{k_{m}}$ son los respectivos pesos
+sinápticos de la neurona $k$; $u_{k}$ es la
+\emph{combinación lineal de salida} debido a la las señales de
+entrada; $b_{k}$ es el sesgo; $\varphi\left(\cdot\right)$ es la
+\emph{función de activación}; e $y_{k}$ es la señal de salida de la
+neurona. El uso del sesgo $b_{k}$ tiene el efecto de aplica una
+\emph{transformación afín} a la salida $u_{k}$ de la combinación
+lineal en el modelo de la portada, como se muestra
+\begin{equation}
+v_{k}=
+u_{k}+b_{k}
+\label{eq:activation-potential}
+\end{equation}
+En particular, dependiendo si el sesgo $b_{k}$ es positivo o negativo,
+la relación entre el \emph{campo local inducido}, o el
+\emph{potencial de activación}, $v_{k}$ de la neurona $k$ y la
+combinación lineal de salida $u_{k}$ es modificada en la manera
+ilustrada en~\ref{fig:geometric}; en lo sucesivo, estos dos términos
+son intercambiablemente usados. Note que como un resultado de la
+transformación afín, el gráfico de $v_{k}$ versus $u_{k}$ ya no pasa
+a través del origen.
+
+El sesgo $b_{k}$ es un parámetro externo de la neurona $k$. Podemos
+dar cuenta de su presencia en~\eqref{eq:output-signal}.
+Equivalentemente, podemos formular la combinación de las
+ecuaciones~\eqref{eq:synaptic-weights}
+a~\eqref{eq:activation-potential} como sigue:
+\begin{align}
+v_{k}&=
+\sum_{j=0}^{m}w_{k_{j}}x_{j}
+\label{eq:linear-combination}
+\shortintertext{y}
+y_{k}&=
+\varphi\left(v_{k}\right)
+\label{eq:activate-function}
+\end{align}
+En~\eqref{eq:linear-combination}, añadimos una nueva sinápsia.
+Su entrada es
+\begin{align}
+x_{0}&=
++1
+\shortintertext{y su peso es}
+w_{k0}&=
+b_{k}
+\end{align}
+%\begin{wrapfigure}{r}{0.3\textwidth}
+%   \centering
+%	\includesvg[width=0.5\paperwidth]{geometric}%trim={5cm 0 0 0},clip
+%	\caption{
+%      Transformación afín producido por la presencia del sesgo; note
+%      que $v_{k}=b_{k}$ en $u_{k}=0$.
+%   }
+%   \label{fig:geometric}
+%\end{wrapfigure}
+Por lo tanto, podemos reformular el modelo de neurona $k$ como se
+muestra en la Fig. 7.
+En esta figura, el efecto del sesgo se explica haciendo dos cosas:
+
+\begin{enumerate}
+	\item agregando una nueva señal de entrada fijada en $+1$, y
+	\item agregando un nuevo peso sináptico igual al sesgo $b_{k}$.
+\end{enumerate}
+
+Aunque los modelos de las Figuras de la portada y~\ref{fig:model-bias}
+son diferentes en apariencia, son matemáticamente equivalentes.
+
+\begin{figure}[H]
+	\centering
+	\includesvg[width=0.8\paperwidth]{model-bias}
+	\caption{
+      Otro modelo no lineal de una neurona; $w_{k0}$ explica por el
+      sesgo $b_{k}$.}
+	\label{fig:model-bias}
+\end{figure}
+
+\subsection{Tipos de funciones de activación}
+
+La función de activación, denotado por $\varphi\left(v\right)$,
+define la entrada de una neurona en términos del campo local inducido
+$v$.
+En lo que sigue, identificamos dos tipos básicos de activación:
+
+\begin{description}
+	\item[1. Función de umbral] Para este tipo de función de activación
+	\begin{equation}
+      \varphi\left(v\right)=
+      \begin{cases}
+	   1,&\text{si }v_{k}\geq0\\
+	   0,&\text{si }v<0
+	   \end{cases}
+	\end{equation}
+	En la ingeniería, esta forma de función
+	\item[2. Función sigmoide]
+\end{description}
+
+\subsection{Modelo estocástico de una neurona}
+
+
+El modelo de la neurona descrito en~\ref{fig:model-bias} es
+determinístico.
+
+Una elección estándar para $P\left(v\right)$ es la función de forma
+sigmoide
+\begin{equation}
+P\left(v\right)=
+\frac{1}{1+\exp\left(-v/T\right)}
+\end{equation}
+donde $T$ es la \emph{pseudotemperatura} usada para controlar el nivel
+de ruido y por lo tanto la incertidumbre disparada.
+
+\subsection{Redes neuronales vistas como grafos dirigidos}
+
+
+El diagrama de bloque de la portada o en la
+Figura~\ref{fig:model-bias} \ldots.
+
+\begin{description}
+   \item[Regla 1] Una señal fluye a lo largo de un enlace solo en la
+   dirección definida por la flecha en el enlace.
+	Dos tipos diferentes de enlaces pueden ser distinguidos:
+	\begin{itemize}
+		\item Enlaces sinápticos.
+		\item Enlaces de activación.
+	\end{itemize}
+   \item[Regla 2] Una señal de nodo es igual a la suma algebraica de
+   todas las señales que ingresan al nodo pertinente a través de los
+   enlaces entrantes.
+
+	Esta segunda regla se ilustra en la figura 9c para el caso de
+	\emph{convergencia sináptica}, o \emph{fan-in}.
+	\item[Regla 3]
+\end{description}
+
+\subsection{Retroalimentación}
+
+
+\section{Regresión Lineal}
+
+
+\subsection{Introducción}
+
+
+En regresión, estamos interesados en predecir un valor escalar
+objetivo, como por ejemplo el precio de una acción.
+Por lineal, queremos decir que el objetivo debe predecirse como una
+función lineal de las entradas.
+Este es un tipo de algoritmo de lenguaje por supervisión.
+También hay una serie de temas que se repetirán a lo largo del curso:
+\begin{itemize}
+   \item Formular matemáticamente una tarea de aprendizaje automático
+   como un problema de optimización.
+   \item Resolver el problema de optimización utilizando dos
+   estrategias diferentes: derivar una solución de forma cerrada y aplicar el descenso
+	de gradiente.
+   \item Escribir el algoritmo en términos de álgebra lineal, para
+   que podamos pensar al respecto más fácilmente e implementarlo
+   eficientemente en un lenguaje de programación de alto nivel.
+\end{itemize}
+
+\subsection{Metas de aprendizaje}
+
+
+\begin{itemize}
+   \item Conocer qué función objetivo se usa en la regresión lineal y
+   cómo está motivado.
+   \item Derivar tanto la solución de forma cerrada como las
+   actualizaciones de descenso de gradiente para regresión lineal.
+   \item Escribir ambas soluciones en términos de operaciones
+   matriciales y vectoriales.
+	\item Poder implementar ambos métodos de solución en Python.
+\end{itemize}
+
+\subsection{Configuración del Problema}
+
+
+Para formular matemáticamente un problema de aprendizaje, necesitamos
+definir dos cosas: un modelo y una función de pérdida.
+El modelo o la arquitectura define el conjunto de hipótesis permitidas
+o funciones que calculan predicciones a partir de las entradas.
+Recuerde que una función lineal de entradas $D$ es parametrizado en
+términos de coeficientes $D$, que llamaremos los \emph{pesos}, y un
+término de intercepción, que llamaremos \emph{sesgo}.
+Matemáticamente se escribe:
+\begin{align}
+y=
+\sum_{j}w_{j}\cdot x_{j}+b
+\end{align}
+
+\begin{align}
+\mathcal{L}(y,t)=
+\frac{1}{2} {(y-t)}^{2}
+\end{align}
+
+\begin{align}
+    \mathcal{J}(w_{1},\ldots,w_{D},b)=\frac{1}{N} \sum_{i=1}^{N}\mathcal{L}(y^{(i)},t^{(i)})
+\end{align}
+\begin{align}
+   \hspace*{3.7cm} =\frac{1}{2N} \sum_{i=1}^{N}\left((y^{(i)},t^{(i)}\right)^{2}
+\end{align}
+\begin{align}
+    \hspace*{4cm} =\frac{1}{2N} \sum_{i=1}^{N}\left(\sum_{j}w_{j}x_{j}^{(i)}+b-t^{(i)} \right)^{2}
+\end{align}
+
+
+
+\newpage
+
+\subsection{Resolviendo el problema de optimización}
+
+
+Para resolver el problema de optimización, necesitaremos el concepto
+de derivadas parciales.Un buen lugar para
+comenzar es calcular las derivadas parciales de la función de costo. Hagamos
+esto  en el caso de la regresión lineal. Aplicando la regla de la cadena para derivados
+
+\subsection{Solución directa}
+
+
+\subsection{Descenso de Gradiente}
+Ahora minimicemos la función de costo de una manera diferente:
+\emph{descenso de gradiente}.
+Este es un ejemplo de un algoritmo iterativo, lo que significa que
+aplicamos cierta regla de actualización una y otra vez, y si tenemos
+suerte, nuestro \emph{itera} mejorará gradualmente de acuerdo con
+nuestra función objetivo.Para hacer descenso de gradiente,
+inicializamos los pesos a algún valor (por ejemplo, todos ceros) y
+los ajustamos repetidamente en la dirección que más disminuye la
+función de costo. Si visualizamos la función de costo como una
+superficie, de modo que cuanto menor sea mejor, esta es la dirección
+del \emph{descenso más empinado}. Repetimos este procedimiento hasta
+que el itera converge, o dejar de cambiar mucho.Si tenemos suerte,
+la iteración final estará cerca del óptimo.
+
+\subsection{Vectorización}
+
+
+Vamos a reescribir el modelo de regresión lineal, así como ambos
+métodos de solución, en términos de operaciones en matrices y
+vectores.
+Este proceso se conoce como vectorización. Las dos razones para
+hacerlo son las siguientes:
+\begin{itemize}
+    \item Las fórmulas pueden ser mucho más simples, más compactas y
+    más legibles en esta forma.
+    \item El código vectorizado puede ser mucho más rápido que los
+    bucles for explícitos, por varios razones.
+\end{itemize}
+
+\subsection{Mapeos de características}
+La regresión lineal puede sonar bastante limitada. ¿Qué pasa si la verdadera relación
+entre entradas y objetivos es no lineal? Afortunadamente, hay una manera fácil de
+usar la regresión lineal para aprender dependencias no lineales: usar una asignación de características.
+Voy a presentar esto a modo de ejemplo. Supongamos que queremos aproximarlo
+con un polinomio cúbico. En otras palabras, calcularíamos las predicciones
+como:
+\begin{align}
+    y=w_{3}x^{3}+w_{2}^{2}+w_{1}x+w_{0}
+\end{align}
+Esta configuración se conoce como \textbf{regresión polinómica}.
+\newpage
+Usemos la función de pérdida de error al cuadrado, al igual que con la regresión lineal ordinaria. Lo importante a notar es que algorítmicamente,la regresión polinomial no es diferente de la regresión lineal. Podemos aplicar cualquiera de los
+algoritmos de regresión lineal descritos anteriormente, utilizando $(x, x^{2},x^{3}
+)$ como las entradas.
+Matemáticamente, definimos un mapeo de características $ \psi $, en este caso:
+\begin{align}
+    \psi(x)=\left( \begin{tabular}{c}
+         1 \\
+        $x$\\
+        $x^{2}$\\
+        $x^{3}$
+    \end{tabular} \right),
+\end{align}
+
+y calcule las predicciones como $y = w^{\top} \psi (x)$ en lugar de $w^{\top} x$. El resto del algoritmo está completamente sin cambios.
+Los mapas de características son una herramienta útil, pero tienes algunas desventajas:
+\begin{itemize}
+    \item Las características deben conocerse de antemano. No siempre es fácil elegir
+buenas características, y hasta hace muy poco, la ingeniería de características
+ocupa la mayor parte del tiempo y el ingenio en la construcción de una máquina práctica
+sistema de aprendizaje
+    \item En grandes dimensiones, las representaciones de entidades pueden ser muy grandes. por
+ejemplo, el número de términos en un polinomio cúbico es cúbico en el
+¡dimensión!
+\end{itemize}
+
+
+
+
+
+
+
+\subsection{Generalización}
+No solo queremos un algoritmo de aprendizaje para hacer predicciones
+correctas sobre los ejemplos de entrenamiento; nos gustaría
+generalizar a ejemplos que no ha visto antes. El error al cuadrado
+promedio en ejemplos novedosos se conoce como error de generalización,
+y nos gustaría que sea lo más pequeño posible.
+Volviendo al ejemplo anterior, consideremos tres modelos polinomiales
+diferentes: (a) una función lineal;(b) un polinomio cúbico; (c) un polinomio de grado 10.
+La función lineal puede ser demasiado simplista para describir los
+datos; esto se conoce como \textbf{underfitting}(sub-ajuste). El polinomio de grado 10
+puede adaptarse a cada ejemplo de entrenamiento exactamente, pero solo
+aprendiendo una función loca. Haría predicciones tontas en todas
+partes excepto en los datos observados.
+Esto se conoce como \textbf{overfitting}(sobre-ajuste). El cubico El polinomio es un
+compromiso razonable. Necesitamos preocuparnos por ambos underfitting y overfitting en casi todas las aplicaciones de Machine Learning.\\
+
+El grado del polinomio es un ejemplo de \textbf{hiperparámetro}.
+Los hiperparámetros son valores que no podemos incluir en el procedimiento de capacitación.
+en sí mismo, pero que debemos establecer utilizando otros medios. Los estadísticos prefieren el término
+metaparámetro desde
+hiperparámetro tiene un diferente
+significado en estadística.
+En la práctica, normalmente ajustamos los hiperparámetros al dividir el conjunto de datos en tres diferentes
+subconjuntos:
+\begin{enumerate}
+    \item El conjunto de entrenamiento se utiliza para entrenar al modelo.
+    \item 
+    El conjunto de validación se utiliza para estimar el error de generalización de
+    cada ajuste de hiperparámetro.
+    \item
+    El conjunto de prueba se utiliza al final, para estimar la generalización.
+    error del modelo final, una vez que se han elegido todos los hiperparámetros.
+\end{enumerate}
+

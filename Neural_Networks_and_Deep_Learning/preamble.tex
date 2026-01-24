@@ -1,0 +1,52 @@
+\documentclass[
+	a4paper,
+	11pt,
+	abstract=true,
+	final
+]{scrreprt}
+
+\usepackage[spanish, es-sloppy]{babel}
+\usepackage[ddmmyyyy,hhmmss]{datetime}
+\usepackage[svgnames]{xcolor}
+\usepackage{svg,graphicx}
+\usepackage{caption,subcaption}
+\usepackage{multicol}
+\usepackage{wrapfig}
+\usepackage{amsthm,mathtools,bm,dsfont}
+\usepackage[chapter]{minted}
+\usepackage{hyperref}
+
+\title{Redes neuronales y aprendizaje profundo}
+
+\subtitle{
+	\url{https://csc413-2020.github.io}\\[\baselineskip]
+	\url{https://drive.google.com/drive/folders/1jyWakxIEYxEZ0CmNbVTEs4ZBaxLcIIlh}
+}
+
+\titlehead{\vfill\centering
+	\includesvg[width=0.7\paperwidth]{portrait}
+}
+
+\author{Roger Grosse \and Jimmy Ba \and Jenny Bao}
+
+\settimeformat{ampmtime}
+\date{Última modificación: \today{} a las \currenttime.}
+
+\renewcommand{\spanishcontentsname}{Tabla de contenidos}
+\renewcommand{\spanishabstractname}{\LARGE Visión general}
+
+\graphicspath{ {img/} }
+
+\newminted{python}{escapeinside=||,mathescape=true,tabsize=4}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definición}
+\newtheorem{theorem}{Teorema}
+
+\hypersetup{
+	pdfencoding=auto,
+	linktocpage=true,
+	colorlinks=true,
+	linkcolor=NavyBlue,
+	urlcolor=magenta,
+}
